@@ -10,8 +10,28 @@
     $locationProvider.html5Mode(true);
   };
 
-  MainController.$inject = ['$scope'];
-  function MainController($scope) {
+  // MainController.$inject = ['$interval'];
+  function MainController($interval) {
     var vm = this;
+
+    tick()
+    $interval(tick, 1000);
+
+    function tick() {
+      vm.clock = Date.now()
+      vm.timeRound = Math.floor(vm.clock / 1000)
+      if ((vm.timeRound % 60) === 0) {
+        console.log(vm.clock);
+        chime();
+      }
+    };
+    function chime() {
+      var sound = new Audio( 'chime.wav' );
+      sound.play();
+    };
+
   };
 }());
+
+//  900000 ms / 15min
+// 3600000 ms / 1hr
