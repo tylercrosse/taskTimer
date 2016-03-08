@@ -20,7 +20,7 @@
     function tick() {
       vm.clock = Date.now()
       vm.timeRound = Math.floor(vm.clock / 1000)
-      if ((vm.timeRound % 60) === 0) {
+      if ((vm.timeRound % 900) === 0) { // play sound every 15mins
         console.log(vm.clock);
         chime();
       }
